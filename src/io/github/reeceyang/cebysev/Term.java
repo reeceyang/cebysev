@@ -32,10 +32,10 @@ public class Term {
     }
 
     /**
-     * Returns the product of this and term.
+     * Returns the product of the current term and the specified term.
      *
-     * @param term the term to multiply this by.
-     * @return the product of term and this.
+     * @param term the term to multiply the current term by.
+     * @return the product of the specified term and the current term.
      */
     public Term multiply(Term term) {
         int newCoefficient = term.getCoefficient() * coefficient;
@@ -44,10 +44,10 @@ public class Term {
     }
 
     /**
-     * Converts the term to a string [coefficient]x^[degree].
-     * If the degree is 0 or the coefficient is 0 the x is omitted.
-     * If the degree is 1 the exponent is omited.
-     * If the coefficient is 1 or -1 the coefficient is ommitted.
+     * Converts the current term to a string [coefficient]x^[degree].
+     * If the degree is 0 or the coefficient is 0 the x is omitted,
+     * if the degree is 1 the exponent is omitted,
+     * and if the coefficient is 1 or -1 the coefficient is omitted.
      *
      * @return the term as a string.
      */
@@ -74,17 +74,20 @@ public class Term {
     }
 
     /**
-     * Checks if an object is equal to this. Two terms are equal
-     * if their coefficients and degrees are equal.
+     * Checks if the specified object is equal to the current term.
+     * Two terms are equal if their coefficients and degrees are equal,
+     * or if their coefficient is 0.
      *
-     * @param object the object to compare to this.
-     * @return true if object is equal to this, false otherwise.
+     * @param object the object to compare to the current term.
+     * @return true if the object is equal to the current term, false otherwise.
      */
     public boolean equals(Object object) {
         if (object instanceof Term) {
             Term otherTerm = (Term) object;
             if (otherTerm.getCoefficient() == coefficient
                     && otherTerm.getDegree() == degree) {
+                return true;
+            } else if (otherTerm.getCoefficient() == 0 && coefficient == 0) {
                 return true;
             }
             return false;

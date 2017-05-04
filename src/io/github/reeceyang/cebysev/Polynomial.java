@@ -15,15 +15,27 @@ public class Polynomial {
         setStandardForm();
     }
 
+    /**
+     * Class constructor that constructs a polynomial with the specified term.
+     *
+     * @param term the single term of the polynomial.
+     */
+    public Polynomial(Term term) {
+        ArrayList<Term> temp = new ArrayList<>();
+        temp.add(term);
+        terms = temp;
+        setStandardForm();
+    }
+
     public ArrayList<Term> getTerms() {
         return terms;
     }
 
     /**
-     * Multiplies this by a polynomial.
+     * Multiplies the current polynomial by the specified polynomial.
      *
      * @param polynomial the polynomial to multiply this by.
-     * @return the product of this and the polynomial
+     * @return the product of the current polynomial and the specified polynomial
      */
     public Polynomial multiply(Polynomial polynomial) {
         ArrayList<Term> otherTerms = polynomial.getTerms();
@@ -37,10 +49,10 @@ public class Polynomial {
     }
 
     /**
-     * Multiplies this by a single term.
+     * Multiplies the current polynomial by the specified term.
      *
-     * @param term the term to multiply this by.
-     * @return the product of this and the term.
+     * @param term the term to multiply the current polynomial by.
+     * @return the product of the current polynomial and the specified term.
      */
     public Polynomial multiply(Term term) {
         ArrayList<Term> temp = new ArrayList<>();
@@ -50,10 +62,10 @@ public class Polynomial {
     }
 
     /**
-     * Adds this and a polynomial.
+     * Adds the current polynomial and the specified polynomial.
      *
-     * @param polynomial the polynomial to add to this.
-     * @return the sum of this and the polynomial.
+     * @param polynomial the polynomial to add to the current polynomial.
+     * @return the sum of the specified polynomial and the current polynomial.
      */
     public Polynomial add(Polynomial polynomial) {
         ArrayList<Term> newTerms = new ArrayList<>();
@@ -67,7 +79,18 @@ public class Polynomial {
     }
 
     /**
-     * Puts polynomial in standard form.
+     * Subtracts the specified polynomial from the current polynomial.
+     *
+     * @param polynomial the polynomial to subtract from the current polynomial.
+     * @return the difference of the current polynomial and the specified polynomial.
+     */
+    public Polynomial subtract(Polynomial polynomial) {
+        return this.add(polynomial.multiply(new Term(-1, 0)));
+    }
+
+    /**
+     * Puts the polynomial in standard form. The terms are arranged so that the
+     * terms with the greatest degrees are first.
      */
     private void setStandardForm() {
         addLikeTerms();
@@ -76,7 +99,7 @@ public class Polynomial {
     }
 
     /**
-     * Adds like terms in polynomial.
+     * Adds the like terms in the polynomial. Like terms have the same degree.
      */
     private void addLikeTerms() {
         int i = 0;
@@ -96,9 +119,9 @@ public class Polynomial {
     }
 
     /**
-     * Converts the polynomial to a string.
+     * Converts the current polynomial to a string.
      *
-     * @return this polynomial in string form.
+     * @return the current polynomial in string form.
      */
     public String toString() {
         String string = "";

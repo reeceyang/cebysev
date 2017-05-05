@@ -1,3 +1,10 @@
+/**
+ * This class models a polynomial. It has an ArrayList of Term objects
+ * and methods to add, subtract, and multiply other polynomials.
+ *
+ * @author Reece Yang
+ */
+
 package io.github.reeceyang.cebysev;
 
 import java.util.ArrayList;
